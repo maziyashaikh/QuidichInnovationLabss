@@ -1,4 +1,4 @@
- @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
         * {
             margin: 0;
@@ -180,18 +180,6 @@
             flex-direction: column;
             justify-content: center;
         }
-
-        .menu-bg {
-            height: 100%;
-            width: 100%;
-        }
-
-        .menu-bg span {
-            height: 33.334%;
-            width: 100%;
-            display: block;
-        }
-        
 
         nav ul {
             list-style-type: none;
@@ -412,6 +400,9 @@ a.effect-shine:hover {
         }
 
         @media screen and (max-width: 767px) {
+            .cursor {
+                display: none;
+            }
             .header-row,
             .header-nav-footer {
                 padding: 30px;
@@ -422,11 +413,11 @@ a.effect-shine:hover {
             }
         
             nav li a {
-                font-size: 20px;
+                font-size: 48px;
             }
         
             .small-menu a {
-                font-size: 16px;
+                font-size: 20px;
             }
         
             .social-links li {
