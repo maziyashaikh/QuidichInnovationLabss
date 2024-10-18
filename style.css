@@ -48,7 +48,14 @@
     margin-top: -4px;
     margin-left: -4px;
     transition: all 0.05s ease-out;
-}
+} .cursor.big-circle {
+            transition: all 0.2s ease-out;
+        }
+        
+        .hover-effect {
+            background-color: #fff;  
+            border-color: #fff; 
+        }
 
         .hover-effect {
             transform: scale(2);
@@ -107,14 +114,13 @@
     left: 0px;
 }
 .menu-toggle:hover .big-circle {
-    /* This will distort the circle to an oval shape */
     transform: scale(1.2, 0.8);
     border-color: #FF7C00;
 }
 .hamburger.close::before, .hamburger.close::after {
     content: '';
     position: absolute;
-    width: 17px;
+    width: 14px;
     height: 2px;
     background-color: #fff;
     transition: all 0.3s ease;
@@ -427,10 +433,10 @@ a.effect-shine:hover {
                 font-size: 16px;
             }
             .video-container {
-                height: 40vh;
-            }
+    width: 100%;
+    height: 30vh !important;
+}
         }
-          /* Magnetic effect for menu toggle */
           [data-hover] {
             position: relative;
         }
@@ -445,11 +451,10 @@ a.effect-shine:hover {
         [data-hover]:hover [data-hover-bounds] {
             transform: scale(4);
         }
-          /* Video Section */
-          .video-container {
-            margin-top: 110px; /* Adjust margin to sit below the header */
+         .video-container {
+            margin-top: 122px; 
             width: 100%;
-            height: 100vh; /* Adjust height */
+            height: 90vh; 
             overflow: hidden;
             display: flex;
             justify-content: center;
@@ -462,7 +467,6 @@ a.effect-shine:hover {
             border: none;
         }
 
-        /* Watch Button Cursor on Video Hover */
         .watch-cursor {
             width: 80px;
             height: 80px;
@@ -479,11 +483,16 @@ a.effect-shine:hover {
             font-weight: bold;
             text-transform: uppercase;
             text-align: center;
-            backdrop-filter: blur(5px); /* Blur effect */
         }
 
-        /* Additional content */
         .content {
             padding: 40px;
             text-align: center;
+        }
+        iframe {
+            pointer-events: none;
+        }
+        
+        iframe:hover {
+            cursor: default;
         }
