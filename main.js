@@ -1,4 +1,4 @@
- document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
             const menuTimeline = gsap.timeline({ paused: true });
             const menuToggle = document.getElementById("menuToggle");
             const hamburgerIcon = document.querySelector(".hamburger");
