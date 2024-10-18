@@ -1,55 +1,121 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const shimmerWave = document.getElementById('shimmerWave');
-    const video = document.getElementById('preloaderVideo');
-    const counter = document.getElementById('counter');
-    const pageContent = document.getElementById('pageContent');
-    const preloader = document.getElementById('preloader');
-    const blob = document.getElementById('blob');
+document.addEventListener("DOMContentLoaded", function () {
+    const menuTimeline = gsap.timeline({ paused: true });
+    const menuToggle = document.getElementById("menuToggle");
+    const hamburgerIcon = document.querySelector(".hamburger");
+    const smallCircle = document.querySelector('.small-circle');
+    const bigCircle = document.querySelector('.big-circle');
+    const watchCursor = document.getElementById('watchCursor'); // Watch button cursor
+    const videoContainer = document.querySelector('.video-container iframe');
 
-    // Rolling number effect
-    function startRollingCounter(duration) {
-      let currentValue = 0;
-      const stepTime = Math.floor(duration / 100);
-      const counterInterval = setInterval(() => {
-        currentValue++;
-        counter.innerHTML = currentValue.toString().padStart(3, '0');
-        if (currentValue >= 100) {
-          clearInterval(counterInterval);
-          gsap.to(preloader, { opacity: 0, duration: 1, onComplete: () => preloader.style.display = 'none' });
-          pageContent.style.visibility = 'visible';
-          gsap.to(pageContent, { top: '0%', duration: 1.5, ease: "power3.inOut" });
+    // Menu Toggle with GSAP Animations
+    menuToggle.addEventListener('click', function () {
+        hamburgerIcon.classList.toggle('close');
+
+        if (menuTimeline.reversed()) {
+            menuTimeline.play();
+        } else {
+            menuTimeline.reverse();
         }
-      }, stepTime);
-    }
-
-    // Split the text for wave effect
-    function splitTextToSpans(targetElement) {
-      const text = targetElement.textContent.trim(); 
-      targetElement.innerHTML = '';
-      for (let character of text) {
-        const span = document.createElement('span');
-        span.textContent = character === ' ' ? '\u00A0' : character; 
-        targetElement.appendChild(span);
-      }
-    }
-
-    splitTextToSpans(shimmerWave);
-
-    // Hide text, then start counter and video together
-    setTimeout(() => {
-      gsap.to(shimmerWave, { opacity: 0, duration: 1, onComplete: () => {
-        counter.style.opacity = 1;
-        video.classList.remove('hidden'); 
-        video.play(); // Ensure video starts immediately
-        gsap.to(video, { opacity: 1, duration: 1 }); 
-        const videoDuration = video.duration * 1000;
-        startRollingCounter(videoDuration); 
-      }});
-    }, 3200);
-
-    // Blob movement on mouse move
-    document.body.addEventListener('pointermove', (e) => {
-      const { clientX: x, clientY: y } = e;
-      blob.style.transform = `translate(${x - window.innerWidth / 2}px, ${y - window.innerHeight / 2}px)`;
     });
-  });
+
+    menuTimeline.to('.fullpage-menu', {
+        duration: 0,
+        display: "block",
+        ease: 'Expo.easeInOut',
+    }).from('.main-menu li a', {
+        duration: 1.5,
+        y: "100%",
+        opacity: 0,
+        stagger: 0.2,
+        ease: 'Expo.easeInOut'
+    }, "-=0.5").from('.small-menu a', {
+        duration: 1.5,
+        y: "100%",
+        opacity: 0,
+        stagger: 0.2,
+        ease: 'Expo.easeInOut'
+    }, "-=0.5").from('.social-links li', {
+        duration: 1,
+        y: "-100%",
+        opacity: 0,
+        stagger: 0.1,
+        ease: 'Expo.easeInOut'
+    }, "-=0.5");
+
+    menuTimeline.reverse();
+
+    // Move circles with cursor
+    document.addEventListener('mousemove', function (e) {
+        smallCircle.style.left = e.pageX + 'px';
+        smallCircle.style.top = e.pageY + 'px';
+        bigCircle.style.left = e.pageX + 'px';
+        bigCircle.style.top = e.pageY + 'px';
+    });
+    function moveCircleWithinBounds(x, y, circle) {
+        const circleRadius = circle.offsetWidth / 2;
+        const maxX = window.innerWidth - circleRadius;
+        const maxY = window.innerHeight - circleRadius;
+        const minX = circleRadius;
+        const minY = circleRadius;
+        const boundedX = Math.min(Math.max(x, minX), maxX);
+        const boundedY = Math.min(Math.max(y, minY), maxY);
+
+        circle.style.left = boundedX + 'px';
+        circle.style.top = boundedY + 'px';
+    }
+    document.addEventListener('mousemove', function (e) {
+        smallCircle.style.left = e.pageX + 'px';
+        smallCircle.style.top = e.pageY + 'px';
+
+        setTimeout(function () {
+            moveCircleWithinBounds(e.pageX, e.pageY, bigCircle);
+        }, 50);
+    });
+    const magneticBtn = document.querySelector(".menu-toggle");
+    magneticBtn.addEventListener("mousemove", function (event) {
+        const { left, top, width, height } = magneticBtn.getBoundingClientRect();
+        const magnetStrength = 0.25;
+        const dx = event.clientX - (left + width / 2);
+        const dy = event.clientY - (top + height / 2);
+        const maxOffset = 15; 
+        gsap.to(magneticBtn, {
+            x: Math.max(-maxOffset, Math.min(dx * magnetStrength, maxOffset)),
+            y: Math.max(-maxOffset, Math.min(dy * magnetStrength, maxOffset)),
+            duration: 0.3,
+            ease: "power4.out"
+        });
+        gsap.to(bigCircle, {
+            scale: 1.8,  
+            ease: "power4.out",
+            duration: 0.3
+        });
+    });
+    magneticBtn.addEventListener("mouseleave", function () {
+        gsap.to(magneticBtn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
+        gsap.to(bigCircle, { scale: 1, duration: 0.3, ease: "power4.out" }); 
+    });
+    const hoverElements = document.querySelectorAll('a, button, .menu-toggle');
+    hoverElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            bigCircle.classList.add('hover-effect');
+        });
+
+        element.addEventListener('mouseleave', () => {
+            bigCircle.classList.remove('hover-effect');
+        });
+    });
+    videoContainer.addEventListener('mouseenter', () => {
+        smallCircle.style.display = 'none';
+        bigCircle.style.display = 'none';
+        watchCursor.style.display = 'flex';
+    });
+    videoContainer.addEventListener('mouseleave', () => {
+        smallCircle.style.display = 'block';
+        bigCircle.style.display = 'block';
+        watchCursor.style.display = 'none';
+    });
+    document.addEventListener('mousemove', function (e) {
+        watchCursor.style.left = e.pageX - 40 + 'px'; 
+        watchCursor.style.top = e.pageY - 40 + 'px'; 
+    });
+});
