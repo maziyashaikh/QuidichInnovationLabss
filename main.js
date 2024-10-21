@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }, "-=0.5");
 
             menuTimeline.reverse();
-
             const smallCircle = document.querySelector('.small-circle');
             const bigCircle = document.querySelector('.big-circle');
 
@@ -49,8 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 bigCircle.style.left = e.pageX + 'px';
                 bigCircle.style.top = e.pageY + 'px';
             });
-
-            // Magnetic effect for the menu toggle button
             const magneticBtn = document.querySelector(".menu-toggle");
 
             magneticBtn.addEventListener("mousemove", function (event) {
@@ -79,8 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 gsap.to(magneticBtn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
                 gsap.to(bigCircle, { scale: 1, duration: 0.3, ease: "power4.out" });
             });
-
-            // Hover effects on elements
             const hoverElements = document.querySelectorAll('a, button, .menu-toggle, iframe');
             hoverElements.forEach(element => {
                 element.addEventListener('mouseenter', () => {
@@ -103,4 +98,37 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
                 });
             });
+            const revealText = document.querySelector("#scroll-text");
+            gsap.fromTo(revealText, {
+                color: "grey"
+            }, {
+                color: "white",
+                scrollTrigger: {
+                    trigger: revealText,
+                    start: 'top 80%',
+                    end: 'top 30%',
+                    scrub: true,
+                }
+            });
+            const gradientBlobLeft = document.createElement("div");
+            const gradientBlobRight = document.createElement("div");
+
+            gradientBlobLeft.style.position = "fixed";
+            gradientBlobLeft.style.top = "0";
+            gradientBlobLeft.style.left = "0";
+            gradientBlobLeft.style.width = "25%";
+            gradientBlobLeft.style.height = "100%";
+            gradientBlobLeft.style.background = "radial-gradient(circle at center, #050523, transparent)";
+            gradientBlobLeft.style.zIndex = "-1";
+
+            gradientBlobRight.style.position = "fixed";
+            gradientBlobRight.style.top = "0";
+            gradientBlobRight.style.right = "0";
+            gradientBlobRight.style.width = "25%";
+            gradientBlobRight.style.height = "100%";
+            gradientBlobRight.style.background = "radial-gradient(circle at center, #050523, transparent)";
+            gradientBlobRight.style.zIndex = "-1";
+
+            document.body.appendChild(gradientBlobLeft);
+            document.body.appendChild(gradientBlobRight);
         });
