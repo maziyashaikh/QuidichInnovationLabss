@@ -708,6 +708,7 @@ span.sidetext {
             background-size: cover;
             background-position: center;
             transition: background-image 0.5s ease;
+            box-shadow: 0 0 8px 5px #000000 inset;
         }
         #circle {
             position: absolute;
@@ -915,12 +916,13 @@ span.sidetext {
   justify-content: center;
   background: url('assets/backgroundcase.jpeg') no-repeat center center fixed;
   background-size: cover;
+  box-shadow: 0 0 8px 5px #000000 inset;
 }
 button.prev, button.next {
-    cursor: pointer; /* Shows the pointer cursor on hover */
+    cursor: pointer; 
 }
 button {
-    pointer-events: auto; /* Ensure buttons receive pointer events */
+    pointer-events: auto;
 }
 .content-wrapper h1 {
     text-align: center;
