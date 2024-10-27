@@ -43,6 +43,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const smallCircle = document.querySelector('.small-circle');
     const bigCircle = document.querySelector('.big-circle');
+    const circleSliderSection = document.getElementById('main');
+
+    function hideCircles() {
+    bigCircle.style.display = 'none';
+    smallCircle.style.display = 'none';
+}
+
+function showCircles() {
+    bigCircle.style.display = 'block';
+    smallCircle.style.display = 'block';
+}
+
+circleSliderSection.addEventListener('mouseenter', hideCircles);
+circleSliderSection.addEventListener('mouseleave', showCircles);
 
     document.addEventListener('mousemove', function (e) {
         smallCircle.style.left = e.pageX + 'px';
@@ -55,6 +69,21 @@ document.addEventListener("DOMContentLoaded", function () {
     clickableElements.forEach(element => {
         element.style.cursor = 'none';
     });
+
+const videoIframe = document.querySelector('.video-container iframe');
+function enableDefaultCursor() {
+    smallCircle.style.display = 'none';
+    bigCircle.style.display = 'none';
+    videoIframe.style.cursor = 'default';
+}
+function disableDefaultCursor() {
+    smallCircle.style.display = 'block';
+    bigCircle.style.display = 'block';
+    videoIframe.style.cursor = 'none';
+}
+
+videoIframe.addEventListener('mouseenter', enableDefaultCursor);
+videoIframe.addEventListener('mouseleave', disableDefaultCursor);
 
     const magneticBtn = document.querySelector(".menu-toggle");
     magneticBtn.addEventListener("mousemove", function (event) {
@@ -162,201 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
         once: true 
     });
 
-    var Starfield = function (el, options) {
-        this.el = el;
-        this.options = Object.assign({}, this.defaults, options);
-        this.init();
-    };
 
-    var isPlaying;
-    var isInited = false;
-    var canCanvas = false;
-    var animId;
-    var that;
-
-    (function () {
-        var lastTime = 0;
-        var vendors = ['ms', 'moz', 'webkit', 'o'];
-        for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-            window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
-            window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] ||
-                window[vendors[x] + 'CancelRequestAnimationFrame'];
-        }
-
-        if (!window.requestAnimationFrame) {
-            window.requestAnimationFrame = function (callback) {
-                var currTime = new Date().getTime();
-                var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-                var id = window.setTimeout(function () { callback(currTime + timeToCall); }, timeToCall);
-                lastTime = currTime + timeToCall;
-                return id;
-            };
-        }
-
-        if (!window.cancelAnimationFrame) {
-            window.cancelAnimationFrame = function (id) {
-                clearTimeout(id);
-            };
-        }
-    }());
-
-    Starfield.prototype = {
-        defaults: {
-            starColor: "rgba(255,255,255,1)",
-            bgColor: "rgba(0,0,0,0.8)",
-            mouseMove: true,
-            mouseColor: "rgba(0,0,0,0.2)",
-            mouseSpeed: 0.09,
-            fps: 15,
-            speed: 0.2,
-            quantity: 300,
-            ratio: 256
-        },
-        resizer: function () {
-            var oldStar = this.star;
-            var initW = this.context.canvas.width;
-            var initH = this.context.canvas.height;
-
-            this.w = this.el.clientWidth;
-            this.h = this.el.clientHeight;
-            this.x = Math.round(this.w / 150);
-            this.y = Math.round(this.h / 200);
-
-            this.context.canvas.width = this.w;
-            this.context.canvas.height = this.h;
-
-            var ratX = this.w / initW;
-            var ratY = this.h / initH;
-
-            for (var i = 0; i < this.n; i++) {
-                this.star[i][0] = oldStar[i][0] * ratX;
-                this.star[i][1] = oldStar[i][1] * ratY;
-
-                this.star[i][3] = this.x + (this.star[i][0] / this.star[i][2]) * this.star_ratio;
-                this.star[i][4] = this.y + (this.star[i][1] / this.star[i][2]) * this.star_ratio;
-            }
-
-            that.context.fillStyle = that.options.bgColor;
-            this.context.strokeStyle = this.options.starColor;
-        },
-        init: function () {
-            that = this;
-            this.n = this.options.quantity;
-            this.star_ratio = this.options.ratio;
-            this.star_speed = this.options.speed;
-            this.star = new Array(this.n);
-
-            this.w = this.el.clientWidth;
-            this.h = this.el.clientHeight;
-            this.x = Math.round(this.w / 2);
-            this.y = Math.round(this.h / 2);
-            this.z = (this.w + this.h) / 2;
-
-            this.context = document.createElement('canvas').getContext('2d');
-            this.context.canvas.width = this.w;
-            this.context.canvas.height = this.h;
-            this.el.appendChild(this.context.canvas);
-
-            this.star_color_ratio = 1 / this.z;
-            this.cursor_x = this.x;
-            this.cursor_y = this.y;
-            for (var i = 0; i < this.n; i++) {
-                this.star[i] = [
-                    Math.random() * this.w * 2 - this.x * 2,
-                    Math.random() * this.h * 2 - this.y * 2,
-                    Math.round(Math.random() * this.z),
-                    0,
-                    0
-                ];
-            }
-            this.context.fillStyle = this.options.bgColor;
-            this.context.strokeStyle = this.options.starColor;
-            isInited = true;
-        },
-        anim: function () {
-            this.mouse_x = this.cursor_x - this.x;
-            this.mouse_y = this.cursor_y - this.y;
-            this.context.fillRect(0, 0, this.w, this.h);
-
-            for (var i = 0; i < this.n; i++) {
-                var test = true;
-                var star_x_save = this.star[i][3];
-                var star_y_save = this.star[i][4];
-                this.star[i][0] += this.mouse_x >> 7;
-
-                if (this.star[i][0] > this.x << 1) {
-                    this.star[i][0] -= this.w << 1;
-                    test = false;
-                }
-                if (this.star[i][0] < -this.x << 1) {
-                    this.star[i][0] += this.w << 1;
-                    test = false;
-                }
-
-                this.star[i][1] += this.mouse_y >> 7;
-                if (this.star[i][1] > this.y << 1) {
-                    this.star[i][1] -= this.h << 1;
-                    test = false;
-                }
-                if (this.star[i][1] < -this.y << 1) {
-                    this.star[i][1] += this.h << 1;
-                    test = false;
-                }
-
-                this.star[i][2] -= this.star_speed;
-                if (this.star[i][2] > this.z) {
-                    this.star[i][2] -= this.z;
-                    test = false;
-                }
-                if (this.star[i][2] < 0) {
-                    this.star[i][2] += this.z;
-                    test = false;
-                }
-
-                this.star[i][3] = this.x + (this.star[i][0] / this.star[i][2]) * this.star_ratio;
-                this.star[i][4] = this.y + (this.star[i][1] / this.star[i][2]) * this.star_ratio;
-
-                if (star_x_save > 0 && star_x_save < this.w && star_y_save > 0 && star_y_save < this.h && test) {
-                    this.context.lineWidth = (1 - this.star_color_ratio * this.star[i][2]) * 1;
-                    this.context.beginPath();
-                    this.context.moveTo(star_x_save, star_y_save);
-                    this.context.lineTo(this.star[i][3], this.star[i][4]);
-                    this.context.stroke();
-                    this.context.closePath();
-                }
-            }
-        },
-        loop: function () {
-            this.anim();
-            animId = window.requestAnimationFrame(function () { that.loop(); });
-        },
-        move: function () {
-            var doc = document.documentElement;
-            var handleMousemove = function (event) {
-                that.cursor_x = event.pageX || event.clientX + doc.scrollLeft - doc.clientLeft;
-                that.cursor_y = event.pageY || event.clientY + doc.scrollTop - doc.clientTop;
-            };
-            window.addEventListener('mousemove', handleMousemove, false);
-        },
-        start: function () {
-            if (!isInited) {
-                this.init();
-            }
-
-            if (!isPlaying) {
-                isPlaying = true;
-                this.loop();
-            }
-
-            window.addEventListener('resize', function () { that.resizer(); }, false);
-
-            if (this.options.mouseMove) {
-                this.move();
-            }
-
-            return this;
-        }
-    };
 
     gsap.fromTo(".main-heading", {
         color: "rgba(255, 255, 255, 0.5)",
@@ -404,8 +239,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 stagger: 0.1,
                 scrollTrigger: {
                     trigger: char,
-                    start: 'top 80%',
-                    end: 'top 20%',
+                    start: 'top 50%',
+                    end: 'top 0%',
                     scrub: true,
                     toggleActions: 'play play reverse reverse',
                 }
@@ -431,38 +266,52 @@ document.addEventListener("DOMContentLoaded", function () {
     sec[active].classList.add('active');
 
     ScrollTrigger.create({
-        trigger: "#main",
-        start: "top top", 
-        end: "+=3000", 
-        pin: true, 
-        scrub: true, 
-        onUpdate: (self) => {
-            const index = Math.floor(self.progress * sec.length);
-            if (active !== index) {
-                active = index;
-                rotateCircle(active);
-            }
+    trigger: "#main",
+    start: "top top", 
+    end: "+=3000", 
+    pin: true, 
+    scrub: 2, // Keeping scrub value for smoother scrolling
+    onUpdate: (self) => {
+        const index = Math.floor(self.progress * sec.length);
+        if (active !== index) {
+            active = index;
+            rotateCircle(active);
+        }
+    }
+});
+
+function rotateCircle(index) {
+    gsap.to("#circle", {
+        rotate: -(index * 15),
+        ease: "power3.out", 
+        duration: 1.8 
+    });
+
+    // Update the visibility of the points
+    greyOut(); 
+    sec[index].classList.add('active'); 
+    updateBackgroundAndSideImage(index);
+}
+
+function greyOut() {
+    sec.forEach(el => {
+        el.classList.remove('active');
+        el.querySelector('.number-circle').style.opacity = '0.5'; 
+    });
+}
+
+sec.forEach((section, idx) => {
+    section.addEventListener('scroll', () => {
+        if (idx === active) {
+            section.querySelector('.number-circle').style.opacity = '1';
         }
     });
-    function rotateCircle(index) {
-        gsap.to("#circle", {
-            rotate: -(index * 15),
-            ease: Expo.easeInOut,
-            duration: 1.5
-        });
-        greyOut(); 
-        sec[index].classList.add('active'); 
-        updateBackgroundAndSideImage(index);
-    }
-
-    function greyOut() {
-        sec.forEach(el => el.classList.remove('active')); 
-    }
+});
 
     gsap.to("#circle", { rotate: 0, ease: Expo.easeInOut, duration: 2 });
     let currentSlide = 0;
 
-    function moveSlides(n) {
+function moveSlides(n) {
   let slides = document.getElementsByClassName('slide');
   currentSlide = (currentSlide + n + slides.length) % slides.length;
 
@@ -470,4 +319,20 @@ document.addEventListener("DOMContentLoaded", function () {
     slides[i].style.transform = `translateX(-${currentSlide * 100}%)`;
   }
 }
+
+document.querySelector('.prev').addEventListener('click', () => moveSlides(-1));
+document.querySelector('.next').addEventListener('click', () => moveSlides(1));
+const cursorElements = document.querySelectorAll('button.prev, button.next');
+
+cursorElements.forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    document.querySelector('.small-circle').style.display = 'none';
+    document.querySelector('.big-circle').style.display = 'none';
+  });
+
+  el.addEventListener('mouseleave', () => {
+    document.querySelector('.small-circle').style.display = 'block';
+    document.querySelector('.big-circle').style.display = 'block';
+  });
+});
 });
