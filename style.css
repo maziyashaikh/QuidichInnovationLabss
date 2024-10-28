@@ -846,6 +846,7 @@ span.sidetext {
             font-weight: normal;
             margin-top: 5px;
            width: 400px !important;
+           padding-top: 20px;
         }
         .number-circle {
             font-size: 48px;
