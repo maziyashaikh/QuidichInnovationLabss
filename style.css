@@ -1454,10 +1454,11 @@ button:hover {
             }
         }
 .sec h3 {
-    font-size: 24px;
+    font-size: 40px;
     font-weight: bold;
     white-space: nowrap;
     margin: 0;
+   padding-top: 40px;
 }
 
 
