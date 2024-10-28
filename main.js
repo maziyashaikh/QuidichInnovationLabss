@@ -309,6 +309,8 @@ sec.forEach((section, idx) => {
 });
 
     gsap.to("#circle", { rotate: 0, ease: Expo.easeInOut, duration: 2 });
+
+
     let currentSlide = 0;
 
 function moveSlides(n) {
@@ -319,6 +321,12 @@ function moveSlides(n) {
     slides[i].style.transform = `translateX(-${currentSlide * 100}%)`;
   }
 }
+function autoSlide() {
+    moveSlides(1);
+}
+
+setInterval(autoSlide, 3000);
+showSlide(currentSlide);
 
 document.querySelector('.prev').addEventListener('click', () => moveSlides(-1));
 document.querySelector('.next').addEventListener('click', () => moveSlides(1));
