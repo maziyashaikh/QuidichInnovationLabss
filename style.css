@@ -1,6 +1,6 @@
  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-      * {
+     * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -653,7 +653,7 @@ a.effect-shine:hover {
     text-align: center;
     width: 100%;
 }
-.textblob::before {
+/* .textblob::before {
     content: "";
     position: absolute;
     top: 43%;
@@ -661,12 +661,28 @@ a.effect-shine:hover {
     transform: translate(-50%, -50%);
     width: 50%;
     height: 232%;
-    background: radial-gradient(circle at center, #0c164ed6, transparent);
-    filter: blur(20px);
+    background: radial-gradient(circle at center, #081455d6, transparent);
+    filter: blur(10px);
     z-index: 0;
     border-radius: 50%;
     pointer-events: none;
+} */
+
+.textblob::before {
+    content: "";
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 300%;
+    background: radial-gradient(circle at center, #081455a8, transparent 70%);
+    filter: blur(20px);
+    z-index: 0;
+    border-radius: 30%;
+    pointer-events: none;
 }
+
 
 .outline-heading {
     font-size: 88px;
@@ -1333,7 +1349,7 @@ button:hover {
 }
 
 .cta-section h2 {
-    font-size: 2.5em;
+    font-size: 2.8em;
     margin-bottom: 20px;
     font-weight: 600;
     color: white;
@@ -1387,7 +1403,7 @@ button:hover {
     width: 350px;
     border: none;
     height: 46px;
-    border-radius: 8px;
+    border-radius: 12px;
     margin-right: 4px;
     background-color: #494f89;
     color: white;
