@@ -8,6 +8,9 @@
         html, body{
             cursor: none;
         }
+        html, body {
+            overflow-x: hidden;
+        }
         a{
             cursor: none !important;
         }
