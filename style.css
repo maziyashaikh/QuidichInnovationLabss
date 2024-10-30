@@ -1647,6 +1647,7 @@ button:hover {
     }
     .menu-toggle {
         padding: 10px;
+        margin-right: 35px;
     }
 
     .brand-logo img {
