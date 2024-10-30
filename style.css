@@ -8,11 +8,11 @@
         html, body{
             cursor: none;
         }
-        a{
-            cursor: none !important;
-        }
         html, body {
             overflow-x: hidden;
+        }
+        a{
+            cursor: none !important;
         }
         body {
             font-family: "Plus Jakarta Sans", sans-serif;
@@ -628,6 +628,7 @@ a.effect-shine:hover {
             transform: translateY(50px);
             font-family: "Lato", sans-serif;
             margin: 0 4px;
+            color: #f3f3f3;
         }
 
         .normal-size {
@@ -656,20 +657,6 @@ a.effect-shine:hover {
     text-align: center;
     width: 100%;
 }
-/* .textblob::before {
-    content: "";
-    position: absolute;
-    top: 43%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50%;
-    height: 232%;
-    background: radial-gradient(circle at center, #081455d6, transparent);
-    filter: blur(10px);
-    z-index: 0;
-    border-radius: 50%;
-    pointer-events: none;
-} */
 
 .textblob::before {
     content: "";
@@ -681,7 +668,7 @@ a.effect-shine:hover {
     height: 300%;
     background: radial-gradient(circle at center, #081455a8, transparent 70%);
     filter: blur(20px);
-    z-index: 0;
+    z-index: -1;
     border-radius: 30%;
     pointer-events: none;
 }
@@ -696,7 +683,7 @@ a.effect-shine:hover {
     left: 0;
     right: 0;
     z-index: 1;
-    -webkit-text-stroke: 1px rgb(255 255 255 / 9%);
+    -webkit-text-stroke: 1px #efefef29;
 }
 .main-heading {
     font-size: 44px;
@@ -752,7 +739,7 @@ a.effect-shine:hover {
 
 .content-section h1 {
     font-size: 41px;
-    font-weight: 700;
+    font-weight: 800;
     color: #fff;
     margin-bottom: 30px;
     z-index: 2;
@@ -765,14 +752,45 @@ a.effect-shine:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(3px);
-    background-color: #0f0f11;
+    backdrop-filter: blur(2px);
+    background: linear-gradient(0deg, rgb(40 44 52 / 44%) 0%, rgb(17 0 32 / 0%) 100%);
     border-radius: 11px;
     padding: 41px 70px;
     max-width: 72%;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    border: 1px solid #2e2f31;
+    box-shadow: 0 7px 20px 5px #00000088;
+    border: 1px solid #2e2f31c9;
     width: 72%;
+}
+.counter-section {
+    position: relative; /* To contain the pseudo-element */
+    overflow: hidden; /* Clip any overflow from ::before */
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+.counter-section:hover {
+    border: 1px solid #ffffff44;
+    box-shadow: 0 7px 50px 10px #000000aa;
+    transform: scale(1.015);
+    filter: brightness(1.3);
+}
+
+.counter-section:hover::before {
+    filter: brightness(0.5);
+    top: -100%; 
+    left: 100%;
+}
+
+.counter-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -76%;
+    width: 87%;
+    height: 140%;
+    transform: rotate(-45deg);
+    box-shadow: 0 0 100px 40px #ffffff08;
+    transition: 0.7s all;
+    pointer-events: none;
 }
 
 .counter-container {
@@ -801,9 +819,10 @@ a.effect-shine:hover {
 .counter {
     font-size: 45px;
     font-weight: bold;
-    background: linear-gradient(157deg, #b9b0b0, #4f4f4f);
-    -webkit-background-clip: text;
-    color: transparent;
+    color: white;
+    box-shadow: none;
+    background: -webkit-linear-gradient(top, rgb(51, 51, 51), rgb(238, 238, 238)) text;
+    -webkit-text-fill-color: transparent;
 }
 .counter-number {
     display: flex;
@@ -822,14 +841,14 @@ a.effect-shine:hover {
 }
 
 span.sidetext {
-  font-size: 45px;
-  font-weight: 700;
-  margin-left: 4px;
-  background: linear-gradient(90deg, #b9b0b0, #4f4f4f);
-  -webkit-background-clip: text;
-  color: transparent;
+    font-size: 45px;
+    font-weight: 700;
+    margin-left: 4px;
+    color: white;
+    box-shadow: none;
+    background: -webkit-linear-gradient(top, rgb(51, 51, 51), rgb(238, 238, 238)) text;
+    -webkit-text-fill-color: transparent;
 }
-
 .counter-item i {
     font-size: 53px;
     color: rgba(255, 255, 255, 0.8);
@@ -860,7 +879,7 @@ span.sidetext {
             top: 0;
             background-color: #000;
             overflow: hidden;
-            background-image: url('assets/stadium-bg.png'); 
+            background-image: url('assets/stadium.png'); 
             background-size: cover;
             background-position: center;
             transition: background-image 0.5s ease;
@@ -1076,7 +1095,7 @@ span.sidetext {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('assets/casestudybg.jpg') no-repeat center center fixed;
+  background: url('assets/casestudyimage.jpg') no-repeat center center fixed;
   background-size: cover;
   box-shadow: 0 0 8px 5px #000000 inset;
 }
@@ -1682,7 +1701,7 @@ button:hover {
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 3rem;
+      gap: 1.5rem;
       padding: 2rem;
     }
     .proplay-button {
@@ -1694,17 +1713,18 @@ button:hover {
 }
 
     .pronft {
-      position: relative;
-      user-select: none;
-      max-width: 300px;
-      border: 1px solid #ffffff22;
-      background-color: #282c34;
-      background: linear-gradient(0deg, rgba(40, 44, 52, 1) 0%, rgba(17, 0, 32, 0.5) 100%);
-      box-shadow: 0 7px 20px 5px #00000088;
-      border-radius: 0.7rem;
-      backdrop-filter: blur(7px);
-      overflow: hidden;
-      transition: 0.5s all;
+        position: relative;
+  user-select: none;
+  width: 100%; /* Allows the card to take full width initially */
+  max-width: 320px; /* Slightly wider cards */
+  border: 1px solid #ffffff22;
+  background-color: #282c34;
+  background: linear-gradient(0deg, rgba(40, 44, 52, 1) 0%, rgba(17, 0, 32, 0.5) 100%);
+  box-shadow: 0 7px 20px 5px #00000088;
+  border-radius: 0.7rem;
+  backdrop-filter: blur(7px);
+  overflow: hidden;
+  transition: 0.3s all;
     }
 
     .pronft::before {
@@ -1721,8 +1741,17 @@ button:hover {
 .pronft:hover {
   border: 1px solid #ffffff44;
   box-shadow: 0 7px 50px 10px #000000aa;
-  transform: scale(1.015);
+  transform: scale(1.05); /* Slightly larger scaling for hover effect */
   filter: brightness(1.3);
+}
+
+.pronft .proimage-container {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .pronft:hover::before {
@@ -1832,9 +1861,9 @@ button:hover {
     }
 
     .promain h2 {
-      margin-top: 0.2rem;
-      margin-bottom: 1.5rem;
-    }
+    margin-top: 0.2rem;
+    font-size: 1rem;
+}
 
     .pronft .promain .prodescription {
       margin: 0.5rem 0;
@@ -1853,7 +1882,3 @@ button:hover {
         flex: 1 1 calc(33.33% - 1.5rem);
       }
     }
-
-
-
-    
