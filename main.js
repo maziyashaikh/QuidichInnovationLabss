@@ -1,4 +1,4 @@
-  document.addEventListener("DOMContentLoaded", function () {
+ document.addEventListener("DOMContentLoaded", function () {
         gsap.registerPlugin(ScrollTrigger);
     
         const menuTimeline = gsap.timeline({ paused: true });
@@ -193,12 +193,14 @@
     
         gsap.to("#scroll-text.reveal-type", {
         color: "white",
-        duration: 1,
+        duration: 2,
         scrollTrigger: {
             trigger: "#scroll-text", 
             start: "top 70%",       
             end: "top 10%",  
             scrub: true,
+            markers: false,
+            toggleActions: 'play play reverse reverse'
         }
     });
     
@@ -206,12 +208,14 @@
             color: "rgba(255, 255, 255, 0.5)",
         }, {
             color: "white",
-            duration: 1,
+            duration: 2,
             scrollTrigger: {
                 trigger: "#section2",
                 start: "top 80%",
                 end: "top 20%",
                 scrub: true,
+                markers: false,
+            toggleActions: 'play play reverse reverse'
             }
         });
     
@@ -237,19 +241,19 @@
         });
     
         splitTypes.forEach((char) => {
-            const text = new SplitType(char, { types: 'words' });
-            gsap.fromTo(text.words, 
+            const text = new SplitType(char, { types: 'chars' });
+            gsap.fromTo(text.chars, 
                 {
                     color: "rgb(48 46 46)", 
                 },
                 {
-                    color: "#ffffff", 
-                    duration: 0.2,
+                    color: "#f3f3f3", 
+                    duration: 0.1,
                     stagger: 0.1,
                     scrollTrigger: {
                         trigger: char,
-                        start: 'top 50%',
-                        end: 'top 0%',
+                        start: 'top 80%',
+                        end: 'top 20%',
                         scrub: true,
                         toggleActions: 'play play reverse reverse',
                     }
@@ -261,11 +265,11 @@
         const sec = document.querySelectorAll(".stripe");
         const sideImages = [
             'assets/stadiumimg.png',
+            'assets/stadium2.png',
             'assets/stadiumimg.png',
+            'assets/stadium2.png',
             'assets/stadiumimg.png',
-            'assets/stadiumimg.png',
-            'assets/stadiumimg.png',
-            'assets/stadiumimg.png'
+            'assets/stadium2.png'
         ];
     
         function updateBackgroundAndSideImage(index) {
@@ -304,7 +308,7 @@
     function greyOut() {
         sec.forEach(el => {
             el.classList.remove('active');
-            el.querySelector('.number-circle').style.opacity = '0.5'; 
+            el.querySelector('.number-circle').style.opacity = '1'; 
         });
     }
     
@@ -375,7 +379,6 @@ const promodalOverlay = document.getElementById('promodalOverlay');
 const promodalContentIframe = promodalOverlay.querySelector('iframe');
 const proCloseModalButton = document.querySelector('.proclose-modal');
 
-// Open modal and autoplay video
 proPlayButtons.forEach(button => {
     button.addEventListener('click', () => {
         openModal();
@@ -384,16 +387,13 @@ proPlayButtons.forEach(button => {
 
 function openModal() {
     promodalOverlay.classList.add('active');
-    promodalContentIframe.src = "https://player.vimeo.com/video/477323798?autoplay=1"; // Set autoplay in src
+    promodalContentIframe.src = "https://player.vimeo.com/video/477323798?autoplay=1"; 
 }
 
-// Close modal and stop video
 function closeModal() {
     promodalOverlay.classList.remove('active');
-    promodalContentIframe.src = ""; // Reset src to stop video playback
+    promodalContentIframe.src = ""; 
 }
 
-// Add event listener to close modal on click
 proCloseModalButton.addEventListener('click', closeModal);
-
     });
