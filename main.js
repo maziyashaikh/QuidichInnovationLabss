@@ -410,18 +410,56 @@ document.addEventListener("DOMContentLoaded", function () {
     if (sliderMobile) {
         let currentSlideIndex = 0;
         const slides = document.querySelectorAll('.mobile-slider-unique .mobile-slide-unique');
+        const dots = document.querySelectorAll('.navigation-unique .dot');
         const totalSlides = slides.length;
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
 
-        function moveSlides(direction) {
-            currentSlideIndex = (currentSlideIndex + direction + totalSlides) % totalSlides;
+        function moveToSlide(index) {
+            currentSlideIndex = index;
             sliderMobile.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+            updateActiveDot();
         }
 
-        // Event listeners for navigation buttons
-        const prevButton = document.querySelector('.mobile-prev-unique');
-        const nextButton = document.querySelector('.mobile-next-unique');
+        function updateActiveDot() {
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlideIndex);
+            });
+        }
 
-        prevButton.addEventListener('click', () => moveSlides(-1));
-        nextButton.addEventListener('click', () => moveSlides(1));
+        // Event listeners for dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => moveToSlide(index));
+        });
+
+        // Initial activation of the first dot
+        updateActiveDot();
+
+        // Touch event handling
+        sliderMobile.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        });
+
+        sliderMobile.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            currentX = e.touches[0].clientX;
+        });
+
+        sliderMobile.addEventListener('touchend', () => {
+            if (!isDragging) return;
+            const diff = startX - currentX;
+            if (Math.abs(diff) > 50) { // Threshold for swipe detection
+                if (diff > 0) {
+                    // Swipe left, move to the next slide
+                    moveToSlide((currentSlideIndex + 1) % totalSlides);
+                } else {
+                    // Swipe right, move to the previous slide
+                    moveToSlide((currentSlideIndex - 1 + totalSlides) % totalSlides);
+                }
+            }
+            isDragging = false;
+        });
     }
 });
