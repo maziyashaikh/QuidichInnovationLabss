@@ -1947,23 +1947,28 @@ button:hover {
 
 .navigation-unique {
     position: absolute;
-    top: 50%;
+    bottom: 15px; /* Position at the bottom of the slider */
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
+    justify-content: center;
+    gap: 10px;
     z-index: 10;
 }
 
-.navigation-unique button {
+.navigation-unique .dot {
+    width: 12px;
+    height: 12px;
     background: rgba(255, 255, 255, 0.8);
-    border: none;
+    border-radius: 50%; /* Make dots circular */
     cursor: pointer;
-    padding: 10px;
     transition: background 0.3s ease;
 }
 
-.navigation-unique button:hover {
+.navigation-unique .dot.active {
+    background: rgba(255, 255, 255, 1); /* Highlight active dot */
+}
+
+.navigation-unique .dot:hover {
     background: rgba(255, 255, 255, 1);
 }
 
@@ -1979,7 +1984,7 @@ button:hover {
     text-decoration: none;
     display: inline-block;
     margin-top: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 40px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Shadow for elevation */
     transition: all 0.3s ease-in-out; /* Smooth hover effect */
     white-space: nowrap; /* Prevent text wrapping */
