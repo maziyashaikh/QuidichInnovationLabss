@@ -1882,3 +1882,120 @@ button:hover {
         flex: 1 1 calc(33.33% - 1.5rem);
       }
     }
+
+    /*hide the desktop slider*/
+
+    @media only screen and (max-width: 768px) {
+        .slider-container {
+          display: none; /* Hide the slider container on mobile */
+        }
+      }
+
+      
+/* Hide test slider on desktop and tablet */
+/* Mobile Slider Styles - Isolated */
+.mobile-slider-container-unique {
+    display: none; /* Hide by default */
+    position: relative;
+    max-width: 100%;
+    overflow: hidden; /* Prevent overflow issues */
+}
+
+@media only screen and (max-width: 768px) {
+    .mobile-slider-container-unique {
+        display: block; /* Show only on mobile */
+    }
+}
+
+.mobile-slider-unique {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%; /* Full width for sliding */
+}
+
+.mobile-slide-unique {
+    min-width: 100%;
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-size: cover;
+    padding: 15px;
+    background-color: #141414;
+}
+
+.mobile-casestudy-img-unique {
+    width: 100%; /* Make the image take full width of the container */
+    height: auto; /* Maintain the aspect ratio */
+    max-width: 600px; /* Limit the width to a maximum size */
+    margin-bottom: 10px;
+    display: block; /* Center the image */
+    border-radius: 10px; /* Optional: add a slight border radius for style */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for a lifted effect */
+}
+
+.mobile-slide-unique {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    background: #121212; /* Use a light background to match your example */
+}
+
+
+.navigation-unique {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.navigation-unique button {
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    transition: background 0.3s ease;
+}
+
+.navigation-unique button:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+
+.view-more-mobile {
+    background: linear-gradient(45deg, #033bb2, #13a0ef); /* Gradient background */
+    color: white;
+    border: none;
+    padding: 25px 75px; /* Adjusted padding for better fit */
+    cursor: pointer;
+    border-radius: 25px; /* Rounded corners */
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Shadow for elevation */
+    transition: all 0.3s ease-in-out; /* Smooth hover effect */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.view-more-mobile:hover {
+    background: linear-gradient(45deg, #02297d, #0d87c3); /* Darker gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect on hover */
+}
+
+.view-more-mobile a {
+    color: white;
+    text-decoration: none;
+    margin-left: -33px;
+    margin-bottom: 20px;
+    padding-bottom: 30px;
+}
+
+
