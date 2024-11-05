@@ -1125,7 +1125,7 @@ span.sidetext {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('assets/casestudyimage.jpg') no-repeat center center fixed;
+  background: url('assets/BG\ for\ Case\ studies-2.png') no-repeat center center fixed;
   background-size: cover;
   box-shadow: 0 0 8px 5px #000000 inset;
 }
