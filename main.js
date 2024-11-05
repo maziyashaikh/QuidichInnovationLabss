@@ -322,7 +322,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     gsap.to("#circle", { rotate: 0, ease: Expo.easeInOut, duration: 2 });
 
-    // ---- Slider Code (Start) ----
+
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
     const sliderContainer = document.querySelector('.slider-container');
@@ -339,10 +339,7 @@ document.addEventListener("DOMContentLoaded", function () {
         moveSlides(1);
     }
 
-    // Auto-slide interval
     setInterval(autoSlide, 3000);
-
-    // Event listeners for navigation buttons
     const prevButton = document.querySelector('.prev');
     const nextButton = document.querySelector('.next');
     if (prevButton) {
@@ -375,8 +372,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setInterval(autoSlide, 3000);
     moveSlides(0);
-    // ---- Slider Code (End) ----
-
     const proPlayButtons = document.querySelectorAll('.proplay-button');
     const promodalOverlay = document.getElementById('promodalOverlay');
     const promodalContentIframe = promodalOverlay.querySelector('iframe');
@@ -402,8 +397,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-//slider mobile//
-
 document.addEventListener("DOMContentLoaded", function () {
     const sliderMobile = document.querySelector('.mobile-slider-unique');
     
@@ -421,41 +414,30 @@ document.addEventListener("DOMContentLoaded", function () {
             sliderMobile.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
             updateActiveDot();
         }
-
         function updateActiveDot() {
             dots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentSlideIndex);
             });
         }
-
-        // Event listeners for dots
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => moveToSlide(index));
         });
-
-        // Initial activation of the first dot
         updateActiveDot();
-
-        // Touch event handling
         sliderMobile.addEventListener('touchstart', (e) => {
             startX = e.touches[0].clientX;
             isDragging = true;
         });
-
         sliderMobile.addEventListener('touchmove', (e) => {
             if (!isDragging) return;
             currentX = e.touches[0].clientX;
         });
-
         sliderMobile.addEventListener('touchend', () => {
             if (!isDragging) return;
             const diff = startX - currentX;
-            if (Math.abs(diff) > 50) { // Threshold for swipe detection
+            if (Math.abs(diff) > 50) { 
                 if (diff > 0) {
-                    // Swipe left, move to the next slide
                     moveToSlide((currentSlideIndex + 1) % totalSlides);
                 } else {
-                    // Swipe right, move to the previous slide
                     moveToSlide((currentSlideIndex - 1 + totalSlides) % totalSlides);
                 }
             }
