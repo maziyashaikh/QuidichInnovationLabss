@@ -1362,10 +1362,7 @@ button:hover {
     justify-content: center;
     border-width: 1px;
     border-style: solid;
-    border-top-color: #101010;
-    border-bottom-color: #202020;
-    border-left-color: #101010;
-    border-right-color: #404040;
+    border-color: #ffffff69;
 }
 
 .cta-section {
