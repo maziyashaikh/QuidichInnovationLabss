@@ -1919,11 +1919,14 @@ button:hover {
         }
       }
 
-.mobile-slider-container-unique {
+   .mobile-slider-container-unique {
     display: none;
     position: relative;
     max-width: 100%;
     overflow: hidden;
+    background: url(assets/casestudymob.png) no-repeat center center fixed;
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -1939,7 +1942,7 @@ button:hover {
 }
 
 .mobile-slide-unique {
-    min-width: 100%;
+    min-width: 98%;
     flex: 0 0 100%;
     display: flex;
     flex-direction: column;
@@ -1948,6 +1951,8 @@ button:hover {
     background-size: cover;
     padding: 15px;
     background-color: #141414;
+    width: 95%;
+    max-width: 97.5%;
 }
 
 .mobile-casestudy-img-unique {
@@ -1966,8 +1971,12 @@ button:hover {
     align-items: center;
     text-align: center;
     padding: 15px;
-    background: #121212; 
+    background: linear-gradient(45deg, #31313096, #30323edb);
+    margin: 5px;
+    border-radius: 19px;
 }
+
+
 
 
 .navigation-unique {
@@ -2002,7 +2011,7 @@ button:hover {
     background: linear-gradient(45deg, #033bb2, #13a0ef);
     color: white;
     border: none;
-    padding: 25px 75px;
+    padding: 13px 68px;
     cursor: pointer;
     border-radius: 25px;
     font-size: 1rem;
@@ -2013,9 +2022,9 @@ button:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease-in-out;
     white-space: nowrap;
-    padding-bottom: 40px;
+    padding-bottom: 30px;
+    padding-left: 61px;
 }
-
 .view-more-mobile:hover {
     background: linear-gradient(45deg, #02297d, #0d87c3); 
     transform: translateY(-3px); 
