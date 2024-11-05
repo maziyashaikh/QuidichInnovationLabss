@@ -416,12 +416,6 @@ a.effect-shine:hover {
 .mobile-heading {
     display: block !important;
 }
-.desktop-blobtxt {
-    display: none !important;
-}
-.mobile-blobtxt {
-    display: block !important;
-}
     .video-container {
         height: 40vh;
     }
@@ -2047,10 +2041,4 @@ button:hover {
 section.mobile-outline {
     height: 26vh !important;
 }
-.mobile-blobtxt {
-    display: none !important;
-}
-.mobile-blobtxt .main-heading {
-    font-size: 2.3rem;
-    padding: 1rem;
-}
+
