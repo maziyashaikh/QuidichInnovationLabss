@@ -1988,7 +1988,7 @@ button:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Shadow for elevation */
     transition: all 0.3s ease-in-out; /* Smooth hover effect */
     white-space: nowrap; /* Prevent text wrapping */
- padding-bottom: 35px;
+ padding-bottom: 40px;
 }
 
 .view-more-mobile:hover {
