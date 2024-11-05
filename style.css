@@ -716,7 +716,7 @@ a.effect-shine:hover {
     -webkit-text-stroke: 1px #efefef29;
 }
 .main-heading {
-/*     font-size: 44px; */
+    font-size: 44px;
     font-weight: 800;
     color: white;
     position: relative;
