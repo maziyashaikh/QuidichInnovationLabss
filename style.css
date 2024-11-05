@@ -2051,3 +2051,8 @@ section.mobile-outline {
     height: 26vh !important;
 }
 
+@media (max-width: 500px){
+    .brand-logo a img:nth-child(1) {
+    height: 42px !important;
+}
+}
