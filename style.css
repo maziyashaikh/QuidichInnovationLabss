@@ -1076,7 +1076,7 @@ span.sidetext {
     z-index: 2;
 }
 .logoslider .logoslide-track-1 {
-    animation: scroll-l 30s linear infinite;
+    animation: scroll-l 60s linear infinite;
     display: flex;
     width: 3500px;
 }
@@ -1104,7 +1104,7 @@ span.sidetext {
     filter: brightness(0.5) grayscale(100%);
 }
 .logoslider .logoslide-track-2 {
-    animation: scroll-r 30s linear infinite;
+    animation: scroll-r 60s linear infinite;
     display: flex;
     width: 3500px;
 }
