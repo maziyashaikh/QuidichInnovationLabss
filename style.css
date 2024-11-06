@@ -1101,6 +1101,7 @@ span.sidetext {
     margin: 0 auto;
     transition: transform 0.3s ease-in-out;
     height: auto;
+    filter: brightness(0.5) grayscale(100%);
 }
 .logoslider .logoslide-track-2 {
     animation: scroll-r 30s linear infinite;
