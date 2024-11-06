@@ -1047,6 +1047,7 @@ span.sidetext {
     cursor: default;
     user-select: none;
     touch-action: none;
+    filter: brightness(0.6) grayscale(100%);
 }
 .logoslider:after, .logoslider:before {
     background: linear-gradient(to right, #efeef200 0%, hsla(0, 0%, 100%, 0) 100%);
