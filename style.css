@@ -1355,6 +1355,7 @@ button:hover {
     align-items: center;
     padding: 60px 0;
     position: relative;
+    height: 100vh;
 }
 .cta-background {
     background: black;
