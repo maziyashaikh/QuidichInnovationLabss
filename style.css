@@ -5,7 +5,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-             header {
+        header {
     transition: top 0.3s ease; 
 }
 
@@ -72,7 +72,7 @@
             mix-blend-mode: difference;
         }
 
-         header {
+        header {
             position: fixed;
             z-index: 20;
             left: 0;
@@ -97,7 +97,6 @@
     backdrop-filter: blur(5px);
     background: rgba(255, 255, 255, 0.1);
 }
-
         .brand-logo img {
             height: 38px;
         }
@@ -431,6 +430,7 @@ a.effect-shine:hover {
 .mobile-heading {
     display: block !important;
 }
+
     .video-container {
         height: 40vh;
     }
@@ -602,7 +602,7 @@ a.effect-shine:hover {
             position: relative;
             overflow: hidden;
             padding-bottom: 87px;
-            padding-top: 110px;
+            padding-top: 50px;
             
         }
 
@@ -1042,8 +1042,8 @@ span.sidetext {
             left: 8%;
             top: 50%;
             transform: translateY(-50%);
-                width: 35%;
-    height: 48%;
+            width: 35%;
+            height: 48%;
             background-size: contain;
             background-repeat: no-repeat;
             transition: background-image 0.5s ease;
@@ -1062,7 +1062,6 @@ span.sidetext {
     cursor: default;
     user-select: none;
     touch-action: none;
-    filter: brightness(0.6) grayscale(100%);
 }
 .logoslider:after, .logoslider:before {
     background: linear-gradient(to right, #efeef200 0%, hsla(0, 0%, 100%, 0) 100%);
@@ -1187,7 +1186,7 @@ button {
 
 .glass-effect {
     position: absolute;
-    top: 11%;
+    top: 7%;
     left: 7%;
     transform: translate(0, 0);
     background: rgb(46 49 59 / 73%);
@@ -1202,7 +1201,7 @@ button {
     margin-top: 8px;
     margin-bottom: 30px;
     margin: 0 auto;
-border: 1px solid #5a6071c2;
+    border: 1px solid #5a6071c2;
 }
 
 .content-wrapper {
@@ -1241,6 +1240,7 @@ padding-left: 60px;
 .info-left p{
     color: #E6E6E6;
 }
+
 .image-section {
   position: absolute;
   top: 10%;
@@ -1369,9 +1369,8 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 60px 0;
+    padding: 83px 0;
     position: relative;
-    height: 100vh;
 }
 .cta-background {
     background: black;
@@ -1384,11 +1383,10 @@ button:hover {
     justify-content: center;
     border-width: 1px;
     border-style: solid;
-        border-top-color: #101010;
+    border-top-color: #101010;
     border-bottom-color: #202020;
     border-left-color: #101010;
     border-right-color: #404040;
-
 }
 
 .cta-section {
@@ -1942,7 +1940,7 @@ button:hover {
         }
       }
 
-  .mobile-slider-container-unique {
+      .mobile-slider-container-unique {
     display: none;
     position: relative;
     max-width: 100%;
@@ -1998,10 +1996,6 @@ button:hover {
     margin: 5px;
     border-radius: 19px;
 }
-
-
-
-
 .navigation-unique {
     position: absolute;
     bottom: 15px; 
@@ -2073,12 +2067,12 @@ button:hover {
 section.mobile-outline {
     height: 26vh !important;
 }
-
 @media (max-width: 500px){
     .brand-logo a img:nth-child(1) {
     height: 42px !important;
 }
 }
+
 .footer {
     background-color: #000000;
     color: #fff;
@@ -2226,7 +2220,7 @@ section.mobile-outline {
     background: -webkit-linear-gradient(#1A1A1A, #262626);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-           opacity: 0.4;
+    opacity: 0.2;
 }
 @media (max-width: 768px) {
     .footer-content {
