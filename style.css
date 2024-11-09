@@ -2226,6 +2226,7 @@ section.mobile-outline {
     background: -webkit-linear-gradient(#1A1A1A, #262626);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+           opacity: 0.2;
 }
 @media (max-width: 768px) {
     .footer-content {
