@@ -5,11 +5,19 @@
             padding: 0;
             box-sizing: border-box;
         }
+             header {
+    transition: top 0.3s ease; 
+}
+
+.header-hidden {
+    top: -100px;
+}
         html, body{
             cursor: none;
-        }
-        html, body {
             overflow-x: hidden;
+        }
+        html {
+            scroll-behavior: smooth;
         }
         a{
             cursor: none !important;
