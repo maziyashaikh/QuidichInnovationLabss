@@ -1,14 +1,11 @@
-document.addEventListener("DOMContentLoaded", function () {
+ document.addEventListener("DOMContentLoaded", function () {
     gsap.registerPlugin(ScrollTrigger);
-
+  
     const header = document.getElementById("header");
 
     let lastScrollTop = 0;
     window.addEventListener("scroll", function() {
         const scrollY = window.scrollY;
-
-        // Sticky header toggle
-        
 
         if (scrollY > lastScrollTop) {
             header.classList.add("header-hidden"); 
@@ -22,10 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
             header.classList.remove("sticky");
         }
 
-        lastScrollTop = scrollY <= 0 ? 0 : scrollY; // Reset on scroll up
+        lastScrollTop = scrollY <= 0 ? 0 : scrollY; 
     });
     
-
     const menuTimeline = gsap.timeline({ paused: true });
     const menuToggle = document.getElementById("menuToggle");
     const hamburgerIcon = document.querySelector(".hamburger");
