@@ -1,22 +1,30 @@
 document.addEventListener("DOMContentLoaded", function () {
     gsap.registerPlugin(ScrollTrigger);
 
-    let lastScrollTop = 0;
-    const header = document.querySelector('header');
+    const header = document.getElementById("header");
 
-    window.addEventListener('scroll', () => {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    let lastScrollTop = 0;
+    window.addEventListener("scroll", function() {
+        const scrollY = window.scrollY;
+
+        // Sticky header toggle
         
-        if (scrollTop > lastScrollTop) {
-            // Scrolling down
-            header.classList.add('header-hidden');
+
+        if (scrollY > lastScrollTop) {
+            header.classList.add("header-hidden"); 
         } else {
-            // Scrolling up
-            header.classList.remove('header-hidden');
+            header.classList.remove("header-hidden");
         }
-        
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For mobile or negative scrolling
+
+        if (scrollY > 50) {
+            header.classList.add("sticky");
+        } else {
+            header.classList.remove("sticky");
+        }
+
+        lastScrollTop = scrollY <= 0 ? 0 : scrollY; // Reset on scroll up
     });
+    
 
     const menuTimeline = gsap.timeline({ paused: true });
     const menuToggle = document.getElementById("menuToggle");
