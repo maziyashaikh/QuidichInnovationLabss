@@ -289,12 +289,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let active = 0;
     const sec = document.querySelectorAll(".stripe");
     const sideImages = [
-        'assets/stadiumimg.png',
-        'assets/stadium2.png',
-        'assets/stadiumimg.png',
-        'assets/stadium2.png',
-        'assets/stadiumimg.png',
-        'assets/stadium2.png'
+        'assets/stadium-1.png',
+        'assets/stadiumtwo.png',
+        'assets/stadium-2.png',
+        'assets/stadium-1.png',
+        'assets/stadiumtwo.png',
+        'assets/stadium-2.png'
     ];
 
     function updateBackgroundAndSideImage(index) {
