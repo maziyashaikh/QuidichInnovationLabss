@@ -2265,3 +2265,82 @@ section.mobile-outline {
 
 
 
+
+/* General Responsive Settings for 1440px screen */
+@media (max-width: 1440px) {
+    /* Adjust header padding */
+    .header-row {
+        padding: 10px 30px;
+    }
+
+    /* Scale down font sizes for headings */
+    .main-heading, .outline-heading {
+        font-size: 3em;
+    }
+
+    /* Responsive Font Size for Slider Titles */
+    .glass-effect h1 {
+        font-size: 1.3em;
+    }
+
+    /* Scale down counter font and item spacing */
+    .counter-section {
+        padding: 20px 50px;
+    }
+
+    .counter-container {
+        gap: 50px;
+    }
+
+    .counter {
+        font-size: 35px;
+    }
+
+    .sidetext {
+        font-size: 30px;
+    }
+
+    /* Adjust video container dimensions */
+    .video-container {
+        height: 50vh;
+    }
+
+    /* Reduce size for call-to-action section */
+    .cta-section h2 {
+        font-size: 2em;
+    }
+    .cta-section p {
+        font-size: 0.9em;
+    }
+
+    /* Resize images within card containers */
+    .pronft img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Adjust slide elements */
+    .slider-container {
+        height: auto;
+    }
+    .glass-effect {
+        padding: 20px;
+    }
+
+    /* Adjust social links size */
+    .social-links li a {
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+    }
+    
+    /* Adjust spacing in the footer */
+    .footer-content {
+        padding: 10px;
+    }
+    .footer-links, .footer-left {
+        font-size: 0.9em;
+    }
+}
+
+
