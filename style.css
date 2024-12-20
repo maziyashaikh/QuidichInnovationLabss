@@ -749,15 +749,28 @@ a.effect-shine:hover {
 }
 
 #bgVideo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  z-index: -1; /* Place behind content */
-  filter: brightness(1.5); /* Make it brighter */
-}
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  
+  #bgOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity for desired effect */
+    z-index: 0;
+    pointer-events: none; /* Allows interaction with the video */
+  }
+
+  
+
 .bg-video::before {
     content: "";
     position: absolute;
@@ -918,7 +931,7 @@ span.sidetext {
             height: 100%;
             object-fit: cover; 
             z-index: -1;
-            filter: brightness(0.1); 
+            filter: brightness(1.0); 
         }
         #main {
             width: 100%;
@@ -2272,8 +2285,3 @@ section.mobile-outline {
 .big-word-footer{
     -webkit-text-stroke: 1.3px #f3590b;
 }
-
-
-
-
-
