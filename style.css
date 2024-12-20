@@ -2176,7 +2176,7 @@ section.mobile-outline {
     font-weight: 600;
 }
 .footer-newsletter button:hover {
-    background-color: none;
+    background-color: none !important;
 }
 
 .footer-newsletter p {
