@@ -765,7 +765,7 @@ a.effect-shine:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at top left, #070c6dc7, #00000000 33%), radial-gradient(circle at top right, #070c6dc7, transparent 33%);
+    background: radial-gradient(circle at top left, #d68e09c7, #00000000 23%), radial-gradient(circle at top right, #d68e09c7, transparent 23%);
     z-index: 2;
     pointer-events: none;
 }
@@ -1274,8 +1274,8 @@ padding-left: 60px;
 }
 
 .view-more {
-    background: linear-gradient(45deg, #033bb2, #13a0ef);
-    color: white;
+    background: linear-gradient(45deg,#ffeb12, #ffeb12);
+    color: black;
     border: none;
     padding: 26px 87px;
     cursor: pointer;
@@ -1290,13 +1290,14 @@ padding-left: 60px;
 }
 
 .view-more:hover {
-  background-color: #0056b3; 
+  background-color: #FF9D00; 
 }
 
 
 .view-more a {
-  color: white; 
+  color: black; 
   text-decoration: none; 
+  font-weight: 550;
 }
 .navigation {
   position: absolute;
@@ -1390,7 +1391,7 @@ button:hover {
 }
 
 .cta-section {
-    background: rgba(0, 0, 50, 0.8) url('assets/bluebg.svg') no-repeat center center / cover;
+    background: rgba(0, 0, 50, 0.8) url('assets/Yellowbg.png') no-repeat center center / cover;
     color: white;
     text-align: center;
     padding: 60px 20px;
@@ -1416,7 +1417,7 @@ button:hover {
     content: "";
     height: 5px;
     width: 18px;
-    background: linear-gradient(45deg, #033bb2, #13a0ef);
+    background: linear-gradient(45deg, #f24f09, #f24f09);
     margin: 0 10px;
     border-radius: 20px;
 }
@@ -1427,14 +1428,14 @@ button:hover {
     font-weight: 600;
     color: white;
     box-shadow: none;
-    background: -webkit-linear-gradient(left, rgb(255 255 255), rgb(51, 51, 51)) text;
+    background: -webkit-linear-gradient(left, rgb(255 255 255), rgb(172, 169, 169)) text;
     -webkit-text-fill-color: transparent;
 }
 .cta-section p {
     margin-bottom: 30px;
     font-size: 0.8em;
     font-weight: 500;
-    color: #cccccc;
+    color: white;
 }
 
 .cta-input {
@@ -1448,7 +1449,7 @@ button:hover {
     width: 250px;
     border: none;
     border-radius: 13px;
-    background-color: rgba(139, 134, 101, 0.35);
+    background-color: #ffffff30;
     color: white;
     font-size: 1.1em;
 }
@@ -1458,7 +1459,7 @@ button:hover {
 }
 
 .submit-btn {
-    background: linear-gradient(135deg, #007bff, #00d4ff);
+    background-color: #FF9D00;
     color: white;
     border: none;
     padding: 15px 30px;
@@ -1469,7 +1470,7 @@ button:hover {
 }
 
 .submit-btn:hover {
-    background: linear-gradient(135deg, #005bb5, #0096c7);
+    background: linear-gradient(135deg, #FF9D00, #FF9D00);
 }
 .cta-section input[type="email"] {
     padding: 15px;
@@ -1478,7 +1479,7 @@ button:hover {
     height: 46px;
     border-radius: 12px;
     margin-right: 4px;
-    background-color: #494f89;
+    background-color: #ffffff30;
     color: white;
     font-size: 0.8em;
     border: 1px solid #ffffff36;
@@ -1488,7 +1489,7 @@ button:hover {
 }
 
 .cta-section .submit-btn {
-    background: linear-gradient(45deg, #033bb2, #13a0ef);
+    background: linear-gradient(45deg, #FF9D00, #FF9D00);
     color: white;
     border: none;
     padding: 14px 45px;
@@ -1501,7 +1502,7 @@ button:hover {
 }
 
 .cta-section .submit-btn:hover {
-  background-color: #005bb5;
+    opacity: 0.9;
 }
 .horizontal-line {
     width: 100%;
@@ -2160,7 +2161,7 @@ section.mobile-outline {
 
 .footer-newsletter button {
     padding: 15px 25px;
-    background: linear-gradient(45deg, #00f, #09f);
+    background: linear-gradient(45deg, #FF9D00, #FF9D00);
     border: none;
     color: white;
     border-radius: 30px;
@@ -2261,6 +2262,10 @@ section.mobile-outline {
 }
 .footersocial-icons ul.social-links li a svg path {
     fill: #9f9f9f;
+}
+
+.big-word-footer{
+    -webkit-text-stroke: 1.3px #f3590b;
 }
 
 
