@@ -2175,9 +2175,9 @@ section.mobile-outline {
     font-size: 14px;
     font-weight: 600;
 }
-.footer-newsletter button:hover {
+/* .footer-newsletter button:hover {
     opacity: 0.9;
-}
+} */
 
 .footer-newsletter p {
     font-size: 12px;
