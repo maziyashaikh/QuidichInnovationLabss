@@ -2165,14 +2165,15 @@ section.mobile-outline {
 
 .footer-newsletter button {
     padding: 15px 25px;
-    background: linear-gradient(45deg, #FF9D00, #FF9D00);
+    background-color: #ffeb12;
     border: none;
-    color: white;
+    color: black;
     border-radius: 30px;
     cursor: pointer;
     width: fit-content;
     height: fit-content;
     font-size: 14px;
+    font-weight: 600;
 }
 .footer-newsletter button:hover {
     opacity: 0.9;
