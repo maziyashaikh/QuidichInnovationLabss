@@ -756,7 +756,7 @@ a.effect-shine:hover {
   height: 100%;
   object-fit: cover; 
   z-index: 1;
-  filter: brightness(0.3); 
+/*   filter: brightness(0.3);  */
 }
 .bg-video::before {
     content: "";
